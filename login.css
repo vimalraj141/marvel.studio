@@ -1,0 +1,349 @@
+body {
+  background: url('https://wallpaperaccess.com/full/1777420.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px red;
+  text-align: center;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  background: red;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: orange;
+}
+
+#errorMsg {
+  color: #ff4444;
+  margin-top: 10px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top left, #1a1a1a, #000000);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background-color: #1f1f1f;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+  width: 350px;
+  text-align: center;
+  animation: zoomIn 0.5s ease-out;
+  transition: box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.9);
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.login-container h2 {
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 0 5px red;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #000;
+  outline: none;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+input:focus {
+  box-shadow: 0 0 10px red;
+  transform: scale(1.02);
+}
+
+button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: none;
+}
+
+button:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 20px red;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#errorMsg {
+  color: red;
+  margin-top: 10px;
+  font-weight: 500;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: black;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.star {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 0;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+body {
+  background: #ccc;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.box {
+  width: 120px;
+  height: 50px;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transform: rotateX(15deg) rotateY(15deg);
+}
+
+.box i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.box span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.box:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 20px 25px rgba(0,0,0,0.4);
+  color: white;
+}
+
+.facebook:hover {
+  background: #3b5998;
+}
+
+.twitter:hover {
+  background: #1da1f2;
+}
+
+.google:hover {
+  background: #dd4b39;
+}
+
+.instagram:hover {
+  background: #e1306c;
+}
+.box:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 20px 25px rgba(0,0,0,0.4), 0 0 30px currentColor;
+  color: white;
+}
+.facebook:hover {
+  background: #3b5998;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.4), 0 0 30px #3b5998;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f4f4f4;
+  margin: 0;
+}
+
+.clock {
+  width: 300px;
+  height: 300px;
+  background: white;
+  border: 8px solid #eee;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.hand {
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  background: black;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s ease-in-out;
+}
+
+.hour {
+  height: 6px;
+  background: black;
+}
+
+.minute {
+  height: 4px;
+  background: black;
+}
+
+.second {
+  height: 2px;
+  background: red;
+}
+
+.center-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+body {
+  background: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.nav-bar {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  color: #6b4ca3;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: #fff0f0;
+  color: #c0392b;
+}
+
+.nav-btn:hover::before,
+.nav-btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: red;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}

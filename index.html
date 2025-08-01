@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Body Styles */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll for animations */
+            background: black;
+            color: white; /* Default text color for the page */
+        }
+
+        /* News Headline Styles */
+        .news-headline-container {
+            background-color: crimson;
+            padding: 10px 0;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.5);
+            position: relative;
+            z-index: 20; /* Ensure it's above other elements */
+        }
+
+        .news-headline {
+            display: inline-block;
+            padding-left: 100%; /* Start the text off-screen to the right */
+            animation: scroll-news 20s linear infinite; /* Adjust duration as needed */
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes scroll-news {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Fire Animation Container */
+        .fire-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .flame {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: orange;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rise 2s linear infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        /* Login Container */
+        .login-container {
+            position: relative;
+            z-index: 10;
+            max-width: 400px;
+            margin: 10% auto 20px auto; /* Adjust margin for news headline */
+            background: rgba(0, 0, 0, 0.8); /* Slightly darker for better contrast */
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.8); /* More prominent red glow */
+            border: 1px solid red; /* Subtle border */
+        }
+
+        .login-container h2 {
+            margin-bottom: 25px;
+            color: #e60000; /* Marvel red */
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+
+        .login-container input {
+            display: block;
+            width: calc(100% - 20px); /* Adjust for padding */
+            margin: 15px auto;
+            padding: 12px 10px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #222;
+            color: white;
+            font-size: 1em;
+        }
+
+        .login-container input::placeholder {
+            color: #aaa;
+        }
+
+        .login-container button {
+            background-color: crimson;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .login-container button:hover {
+            background-color: darkred;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+
+        #errorMsg {
+            color: yellow;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* Star Background */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Social Media Buttons */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .social-buttons .box {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 2em;
+            border-radius: 15px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-buttons .box i {
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-buttons .box span {
+            position: absolute;
+            font-size: 0.8em;
+            top: 100%; /* Position text below icon */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            white-space: nowrap;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .social-buttons .box:hover span {
+            opacity: 1;
+        }
+
+        /* Specific Social Button Colors */
+        .social-buttons .facebook { background: #3b5998; }
+        .social-buttons .twitter { background: #1da1f2; }
+        .social-buttons .google { background: #dd4b39; }
+        .social-buttons .instagram { background: #E1306C; }
+
+        .social-buttons .box:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background-color: rgba(34, 34, 34, 0.9); /* Darker, slightly transparent */
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255, 0, 0, 0.5);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 100; /* Ensure it's on top */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .nav-btn {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255, 0, 0, 0.7);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .nav-btn.active {
+            background-color: crimson;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+            transform: scale(1.05);
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVENESS (Media Queries) --- */
+
+        /* For screens smaller than 768px (e.g., mobile phones) */
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%; /* Take more width on smaller screens */
+                margin: 15% auto 20px auto; /* Adjust margin */
+                padding: 20px;
+            }
+
+            .login-container h2 {
+                font-size: 1.5em;
+            }
+
+            .login-container input {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .login-container button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .social-buttons {
+                flex-direction: row; /* Keep row for social buttons */
+                gap: 10px; /* Reduce gap */
+                margin-top: 30px;
+            }
+
+            .social-buttons .box {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em; /* Smaller icons */
+                border-radius: 10px;
+            }
+
+            .nav-bar {
+                flex-direction: column; /* Stack navigation buttons vertically */
+                align-items: center;
+                padding: 10px 0;
+            }
+
+            .nav-btn {
+                width: calc(100% - 40px); /* Make buttons full width minus padding */
+                margin: 5px 0; /* Adjust vertical margin */
+                text-align: center;
+                justify-content: center; /* Center icon and text */
+            }
+
+            .news-headline {
+                font-size: 1em; /* Smaller font size for news */
+                animation-duration: 15s; /* Faster scroll on mobile */
+            }
+        }
+
+        /* For very small screens (e.g., older phones) */
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10% auto 20px auto;
+                padding: 15px;
+            }
+
+            .login-container h2 {
+                font-size: 1.3em;
+            }
+
+            .social-buttons .box {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3em;
+            }
+
+            .nav-btn {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .news-headline {
+                font-size: 0.9em;
+                animation-duration: 12s;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="news-headline-container">
+        <div class="news-headline">
+            ⚡ MARVEL EVENT COMING SOON! STAY TUNED FOR EXCITING ANNOUNCEMENTS! 🔥
+        </div>
+    </div>
+
+    <div class="fire-container" id="fireContainer"></div>
+
+    <script>
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement("div");
+            star.className = "star";
+            star.style.top = Math.random() * window.innerHeight + "px";
+            star.style.left = Math.random() * window.innerWidth + "px";
+            document.body.appendChild(star);
+        }
+    </script>
+
+    <div class="login-container">
+        <h2>Welcome to Marvel Universe</h2>
+        <form onsubmit="return validateLogin()">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p id="errorMsg"></p>
+        </form>
+    </div>
+
+    <div class="social-buttons">
+        <div class="box facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+        </div>
+        <div class="box twitter">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter</span>
+        </div>
+        <div class="box google">
+            <i class="fab fa-google-plus-g"></i>
+            <span>Google</span>
+        </div>
+        <div class="box instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="#" class="nav-btn">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="#" class="nav-btn">
+            <i class="fas fa-blog"></i> Blog
+        </a>
+        <a href="#" class="nav-btn active">
+            <i class="fas fa-code"></i> Code
+        </a>
+        <a href="#" class="nav-btn">
+            <i class="fas fa-envelope"></i> Help
+        </a>
+        <a href="#" class="nav-btn">
+            <i class="fas fa-user"></i> About
+        </a>
+    </nav>
+
+    <script>
+        function validateLogin() {
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+
+            if (user === "ironman" && pass === "avengers") {
+                // Redirect to home.html upon successful login
+                window.location.href = "home.html";
+                return false; // Prevent default form submission
+            } else {
+                document.getElementById("errorMsg").textContent = "Invalid credentials!";
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+
+    <script>
+        const fireContainer = document.getElementById('fireContainer');
+        // Reduce the number of flames on smaller screens for performance
+        const numFlames = window.innerWidth < 768 ? 20 : 40;
+
+        for (let i = 0; i < numFlames; i++) {
+            const flame = document.createElement('div');
+            flame.className = 'flame';
+            flame.style.left = Math.random() * window.innerWidth + 'px';
+            flame.style.animationDuration = 1 + Math.random() * 2 + 's';
+            flame.style.background = Math.random() > 0.5 ? 'orange' : 'red';
+            fireContainer.appendChild(flame);
+        }
+    </script>
+</body>
+</html>
