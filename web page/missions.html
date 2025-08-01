@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.H.I.E.L.D. Mission Briefing</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mission-container">
+        <div class="console-screen left-panel">
+            <header>
+                <div class="header-logo">
+                    <img src="shield.jpg" alt="S.H.I.E.L.D. Logo">
+                </div>
+                <h1>MISSION: OPERATION WASTELAND</h1>
+                <p class="mission-status">STATUS: AWAITING TEAM SELECTION</p>
+            </header>
+
+            <section class="mission-details">
+                <h2>OBJECTIVE</h2>
+                <p>Deploy a strike team to Sector Omega to conduct reconnaissance on anomalous energy signatures. Await further orders post-insertion.</p>
+                
+                <h2>OPERATIONAL PARAMETERS</h2>
+                <ul>
+                    <li><strong>Team Size:</strong> Minimum 1 agent</li>
+                    <li><strong>Designation:</strong> Omega Protocol</li>
+                    <li><strong>Priority:</strong> Alpha-1</li>
+                    <li><strong>Warning:</strong> High-risk environment.</li>
+                </ul>
+            </section>
+            
+            <section class="selected-summary">
+                <h2>SELECTED TEAM</h2>
+                <ul id="selected-agents-list">
+                    <li><span class="placeholder-text">No agents selected.</span></li>
+                </ul>
+            </section>
+
+            <div class="console-footer">
+                <a href="home.html" class="return-button">RETURN TO HQ</a>
+            </div>
+        </div>
+
+        <div class="console-screen right-panel">
+            <div class="right-panel-tabs">
+                <button id="tab-selection" class="tab-button active">AGENT SELECTION</button>
+                <button id="tab-store" class="tab-button">AGENT STORE</button>
+            </div>
+
+            <div id="selection-view" class="panel-view active">
+                <div class="agent-selection-grid">
+                    <figure class="agent-card" data-agent="ironman">
+                        <img src="ironman4.jpg" alt="Iron Man" height="200" width="300">
+                        <figcaption>IRON MAN</figcaption>
+                        <span class="selection-status">AVAILABLE</span>
+                    </figure>
+                    <figure class="agent-card" data-agent="captainamerica">
+                        <img src="images/cap_profile.png" alt="Captain America">
+                        <figcaption>CAPTAIN AMERICA</figcaption>
+                        <span class="selection-status">AVAILABLE</span>
+                    </figure>
+                    <figure class="agent-card" data-agent="blackwidow">
+                        <img src="images/bw_profile.png" alt="Black Widow">
+                        <figcaption>BLACK WIDOW</figcaption>
+                        <span class="selection-status">AVAILABLE</span>
+                    </figure>
+                    <figure class="agent-card" data-agent="hulk">
+                        <img src="images/hulk_profile.png" alt="Hulk">
+                        <figcaption>HULK</figcaption>
+                        <span class="selection-status">AVAILABLE</span>
+                    </figure>
+                </div>
+                <p class="selection-info">Select agents for deployment.</p>
+                <button id="proceed-to-store" class="confirm-button">PROCEED TO STORE</button>
+            </div>
+            
+            <div id="store-view" class="panel-view">
+                <h2>MISSION SUPPLIES</h2>
+                <div class="store-grid">
+                    <div class="store-item" data-item="medkit">
+                        <img src="images/medkit.png" alt="Medkit">
+                        <h4>S.H.I.E.L.D. Medkit</h4>
+                        <p class="item-desc">High-grade battlefield trauma kit.</p>
+                        <button class="buy-button">ADD TO CART</button>
+                    </div>
+                    <div class="store-item" data-item="stealth-tech">
+                        <img src="images/stealth_tech.png" alt="Stealth Tech">
+                        <h4>Stealth Cloak</h4>
+                        <p class="item-desc">Advanced optical camouflage.</p>
+                        <button class="buy-button">ADD TO CART</button>
+                    </div>
+                    <div class="store-item" data-item="power-core">
+                        <img src="images/power_core.png" alt="Power Core">
+                        <h4>Arc Reactor Core</h4>
+                        <p class="item-desc">Emergency power for high-demand gear.</p>
+                        <button class="buy-button">ADD TO CART</button>
+                    </div>
+                    </div>
+                <p id="total-price" class="selection-info">Total Cost: $0</p>
+                <button id="deploy-team" class="confirm-button">DEPLOY TEAM</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
